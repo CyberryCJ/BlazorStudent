@@ -23,5 +23,14 @@ namespace BlazorStudent.Server.Controllers
             var student = await _iStudent.StudentList();
             return student;
         }
+
+        [HttpPost("[action]")]
+        public async Task   Create([FromBody] Students students)
+        {
+            if (ModelState.IsValid)
+                await _iStudent.SaveData(students);
+        }
+
+        
     }
 }
